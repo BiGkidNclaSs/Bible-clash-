@@ -1,0 +1,152 @@
+:root {
+    --bg: #0f172a;
+    --card: #1e2937;
+    --gold: #f59e0b;
+    --text: #f1f5f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 20px;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 18px;
+}
+
+input {
+    width: 100%;
+    padding: 18px;
+    font-size: 18px;
+    background: #334155;
+    border: none;
+    border-radius: 16px;
+    color: white;
+    margin-bottom: 12px;
+    transition: background 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    background: #475569;
+}
+
+button {
+    width: 100%;
+    padding: 18px;
+    font-size: 18px;
+    font-weight: 700;
+    background: var(--gold);
+    color: #1e2937;
+    border: none;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #f97316;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.verse-card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reference {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.verse-text {
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    color: #e2e8f0;
+}
+
+.perspective {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.perspective h3 {
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.christian h3 {
+    color: #67e8f9;
+}
+
+.hebrew h3 {
+    color: #c4b5fd;
+}
+
+.jewish h3 {
+    color: #fcd34d;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    .verse-text {
+        font-size: 18px;
+    }
+
+    input,
+    button {
+        padding: 16px;
+        font-size: 16px;
+    }
+
+    .verse-card {
+        padding: 18px;
+    }
+}
