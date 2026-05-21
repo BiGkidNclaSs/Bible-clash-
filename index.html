@@ -38,6 +38,13 @@ const DATA = {
     christian: "This is the most famous verse in Christianity. It shows God's love is available to all who believe in Jesus.",
     hebrew: "The 'world' refers to the scattered nation of Israel. God's love is directed toward His chosen people.",
     jewish: "God loves all humanity. Every person is created in the image of God."
+  },
+  "who betrayed jesus": {
+    ref: "Matthew 26:14-16",
+    text: "Then one of the twelve, called Judas Iscariot, went unto the chief priests, and said unto them, What will ye give me, and I will deliver him unto you? And they covenanted with him for thirty pieces of silver.",
+    christian: "Judas Iscariot, one of Jesus' own disciples, betrayed Him for 30 pieces of silver.",
+    hebrew: "Judas betrayed the Hebrew prophet Yeshua to the Roman authorities.",
+    jewish: "This story has been tragically misused to blame all Jewish people for Jesus' death."
   }
 };
 
@@ -49,6 +56,7 @@ function ask() {
   
   result.innerHTML = `<h2 style="margin:25px 0 16px;">${q}</h2>`;
 
+  const key = q.toLowerCase();
   const answer = DATA ;
 
   if (answer) {
@@ -70,6 +78,8 @@ function ask() {
           <p>${answer.jewish}</p>
         </div>
       </div>`;
+  } else {
+    result.innerHTML += `<p style="padding:30px;text-align:center;opacity:0.7;">No answer available for this question yet.</p>`;
   }
 }
 </script>
