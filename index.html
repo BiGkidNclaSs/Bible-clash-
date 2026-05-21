@@ -1,24 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bible Clash</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bible Clash</title>
+<style>
+    body {margin:0;padding:20px;background:#0f172a;color:#f1f5f9;font-family:-apple-system,system-ui,sans-serif;line-height:1.6}
+    h1 {font-size:42px;text-align:center;margin:25px 0 8px}
+    .subtitle {text-align:center;color:#94a3b8;font-size:17px;margin-bottom:30px}
+    input {width:100%;padding:18px;font-size:18px;background:#1e2937;border:none;border-radius:16px;color:white;margin-bottom:12px}
+    button {width:100%;padding:18px;font-size:19px;font-weight:700;background:#f59e0b;color:#1c1917;border:none;border-radius:16px;margin-bottom:30px}
+    .result {margin-top:10px}
+    .verse-card {background:#1e2937;border-radius:20px;padding:24px;margin-bottom:24px}
+    .ref {color:#fcd34d;font-weight:700;font-size:19px;margin-bottom:12px}
+    .verse-text {font-size:21px;font-style:italic;line-height:1.65;margin-bottom:24px;color:#e2e8f0}
+    .perspective {margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.12)}
+    .christian h3 {color:#67e8f9}
+    .hebrew h3 {color:#c4b5fd}
+    .jewish h3 {color:#fcd34d}
+</style>
 </head>
 <body>
 
-<header>
-    <h1>⚔️ Bible Clash</h1>
-    <p class="subtitle">KJV • Three Perspectives</p>
-</header>
+<h1>⚔️ Bible Clash</h1>
+<p class="subtitle">KJV • Three Perspectives</p>
 
-<input type="text" id="questionInput" placeholder="Ask a question about the Bible…">
-<button onclick="searchQuestion()">Ask</button>
+<input type="text" id="input" placeholder="Ask a question about the Bible…">
+<button onclick="ask()">Ask</button>
 
-<div id="result"></div>
+<div id="result" class="result"></div>
 
-<script src="script.js"></script>
+<script>
+const DATA = {
+  "does jesus love everybody": {
+    ref: "John 3:16",
+    text: "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.",
+    christian: "This is the most famous verse in Christianity. It shows God's love is available to all who believe in Jesus.",
+    hebrew: "The 'world' refers to the scattered nation of Israel. God's love is directed toward His chosen people.",
+    jewish: "God loves all humanity. Every person is created in the image of God."
+  }
+};
+
+function ask() {
+  const q = document.getElementById("input").value.trim();
+  const result = document.getElementById("result");
+  
+  if (!q) return;
+  
+  result.innerHTML = `<h2 style="margin:25px 0 16px;">${q}</h2>`;
+
+  const answer = DATA ;
+
+  if (answer) {
+    result.innerHTML += `
+      <div class="verse-card">
+        <div class="ref">${answer.ref}</div>
+        <div class="verse-text">"${answer.text}"</div>
+        
+        <div class="perspective christian">
+          <h3>✝ Christian Perspective</h3>
+          <p>${answer.christian}</p>
+        </div>
+        <div class="perspective hebrew">
+          <h3>✡ Black Hebrew Israelite Perspective</h3>
+          <p>${answer.hebrew}</p>
+        </div>
+        <div class="perspective jewish">
+          <h3>🕎 Jewish Perspective</h3>
+          <p>${answer.jewish}</p>
+        </div>
+      </div>`;
+  }
+}
+</script>
 
 </body>
 </html>
