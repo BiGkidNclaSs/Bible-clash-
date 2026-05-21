@@ -45,19 +45,33 @@ const DATA = {
     christian: "Judas Iscariot, one of Jesus' own disciples, betrayed Him for 30 pieces of silver.",
     hebrew: "Judas betrayed the Hebrew prophet Yeshua to the Roman authorities.",
     jewish: "This story has been tragically misused to blame all Jewish people for Jesus' death."
+  },
+  "are we still under the law": {
+    ref: "Matthew 5:17",
+    text: "Think not that I am come to destroy the law, or the prophets: I am not come to destroy, but to fulfil.",
+    christian: "Jesus fulfilled the law. Christians are no longer under the Old Testament law but under grace.",
+    hebrew: "The law was never abolished. Yeshua came to uphold and properly teach God's commandments.",
+    jewish: "The Torah remains eternal and binding for the Jewish people."
   }
 };
 
 function ask() {
-  const q = document.getElementById("input").value.trim();
+  const input = document.getElementById("input").value.trim();
   const result = document.getElementById("result");
   
-  if (!q) return;
+  if (!input) return;
   
-  result.innerHTML = `<h2 style="margin:25px 0 16px;">${q}</h2>`;
+  result.innerHTML = `<h2 style="margin:25px 0 16px;color:#fcd34d;">${input}</h2>`;
 
-  const key = q.toLowerCase();
-  const answer = DATA ;
+  const key = input.toLowerCase();
+  let answer = null;
+
+  for (let k in DATA) {
+    if (key.includes(k) || k.includes(key)) {
+      answer = DATA ;
+      break;
+    }
+  }
 
   if (answer) {
     result.innerHTML += `
@@ -79,7 +93,7 @@ function ask() {
         </div>
       </div>`;
   } else {
-    result.innerHTML += `<p style="padding:30px;text-align:center;opacity:0.7;">No answer available for this question yet.</p>`;
+    result.innerHTML += `<p style="padding:40px 20px;text-align:center;opacity:0.7;">Sorry, no answer available for that question yet.</p>`;
   }
 }
 </script>
