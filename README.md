@@ -47,6 +47,29 @@ npx http-server
 1. Install the "Live Server" extension
 2. Right-click `index.html` and select "Open with Live Server"
 
+### Option 4: Open It on Your Phone (QR Code)
+
+Run `/mobile` in a Claude Code session to print a QR code you can scan with your
+phone camera. `/ios` and `/android` do the same thing.
+
+```bash
+# Or run the generator directly, without Claude Code:
+node .claude/scripts/qr.js              # QR for the deployed site
+node .claude/scripts/qr.js --local 8000 # QR for http://<your-lan-ip>:8000/
+```
+
+Useful flags:
+
+| Flag | Effect |
+| --- | --- |
+| `--local [port]` | Encode this machine's LAN address instead of the live site, so you can test local changes on a real phone. Serve the directory first (`python3 -m http.server 8000`) and keep the phone on the same network. |
+| `--invert` | Swap light and dark. Try this if a dark terminal makes the code hard to scan. |
+| `--big` | Draw each module as two characters. Easier to scan, but too wide for an 80-column terminal — and a wrapped QR code will not scan at all. |
+| `--ecc L\|M\|Q\|H` | Error correction level (default `M`). |
+
+Any other argument is encoded verbatim, so `node .claude/scripts/qr.js "https://example.com"`
+works as a general purpose QR generator.
+
 ## How to Use
 
 1. Type a Bible question in the input field
@@ -67,7 +90,10 @@ Bible-clash-/
 ├── index.html      # Main HTML structure
 ├── styles.css      # Styling and responsive design
 ├── script.js       # Application logic and database
-└── README.md       # Documentation
+├── README.md       # Documentation
+└── .claude/
+    ├── commands/   # /mobile, /ios and /android slash commands
+    └── scripts/    # qr.js — dependency-free QR code generator (+ tests)
 ```
 
 ## Adding More Questions
